@@ -16,6 +16,7 @@
         <el-menu
           :collapse="isCollpase"
           :collapse-transition="false"
+          :default-active="activePath"
           router
           unique-opened
           background-color="#333744"
@@ -33,7 +34,9 @@
             <!-- 二级菜单 -->
             <el-menu-item
               v-for="subItem in item.children" :key="subItem.id"
-              :index="'/' + subItem.path">
+              :index="'/' + subItem.path"
+              @click="saveNavState('/' + subItem.path)"
+            >
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span> {{subItem.authName}} </span>
@@ -62,7 +65,8 @@ export default {
         '102': 'iconfont icon-danju',
         '145': 'iconfont icon-baobiao'
       },
-      isCollpase: false
+      isCollpase: false,
+      activePath: ''
     }
   },
   methods: {
@@ -79,7 +83,14 @@ export default {
     },
     toggleCollapse () {
       this.isCollpase = !this.isCollpase
+    },
+    saveNavState (activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+      this.activePath = window.sessionStorage.getItem('activePath')
     }
+  },
+  created () {
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   mounted () {
     this.getMenuList()
