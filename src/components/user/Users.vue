@@ -16,7 +16,7 @@
           </el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary">添加用户</el-button>
+          <el-button @click="addDialogVisible = true" type="primary">添加用户</el-button>
         </el-col>
       </el-row>
       <!-- 用户列表区 -->
@@ -45,7 +45,7 @@
           </template>
         </el-table-column>
       </el-table>
-      <!-- 分布区 -->
+      <!-- 分页区 -->
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
@@ -56,6 +56,17 @@
         :total="total">
       </el-pagination>
     </el-card>
+    <!-- 添加用户对话框 -->
+    <el-dialog
+      title="添加用户"
+      :visible.sync="addDialogVisible"
+      width="50%">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="addDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="addDialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -70,7 +81,8 @@ export default {
         pagesize: 2
       },
       userList: [],
-      total: 0
+      total: 0,
+      addDialogVisible: false
     }
   },
   methods: {
