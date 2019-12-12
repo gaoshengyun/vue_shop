@@ -20,3 +20,9 @@ html, body, #app {
 .el-scrollbar__wrap {
   height: 300px !important;
 }
+.el-steps {
+  margin: 15px 0;
+}
+.el-step__title {
+  font-size: 13px;
+}
