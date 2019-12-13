@@ -222,13 +222,11 @@ export default {
       const i = this.addForm.pics.findIndex(x => x.pic === filePath)
       // 3. 调用数组的 splice 方法,把图片信息对象从pics数组中删除
       this.addForm.pics.splice(i, 1)
-      console.log(this.addForm.pics)
     },
     handleSiccess (response) {
       // 监听图片上传成功的事件
       const picInfo = { pic: response.data.tmp_path }
       this.addForm.pics.push(picInfo)
-      console.log(this.addForm.pics)
     },
     // 添加商品
     add () {
@@ -255,7 +253,6 @@ export default {
           this.addForm.attrs.push(newInfo)
         })
         form.attrs = this.addForm.attrs
-        console.log(form)
         const { data: res } = await this.$http.post('goods', form)
         if (res.meta.status !== 200) {
           return this.$message.error('添加商品失败')

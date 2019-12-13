@@ -208,7 +208,6 @@ export default {
     },
     // 选择项发生改变触发函数
     parentCateChange () {
-      console.log(this.selectedKeys)
       // 如果 selectedKeys 的length大于0,说明选中父级分类,反之没有选中任何父级分类
       if (this.selectedKeys.length > 0) {
         this.addCatForm.cat_pid = this.selectedKeys[this.selectedKeys.length - 1]
