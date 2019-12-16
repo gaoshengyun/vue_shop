@@ -1,5 +1,8 @@
 # vue_shop
 
+### 此项目需要和 `vue_shop_backend` 项目配套使用  
+github: [vue_shop_backend](https://github.com/gaoshengyun/vue_shop_backend)
+
 ## Project setup
 ```
 npm install
